@@ -10,6 +10,6 @@ class campaignTest(TestCase):
         it expects to craate a new campaign successfully
         """
         campaign = Campaign.objects.create(name="myCampaign")
-        campaign_name = Campaign.name
+        campaign_name = campaign.name
 
         self.assertEqual(str(campaign), campaign_name)

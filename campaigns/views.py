@@ -1,3 +1,8 @@
-from django.shortcuts import render
+from .models import Campaign
+from .serializers import CampaignSerializer
+from rest_framework import generics
 
-# Create your views here.
+
+class CampaignListCreate(generics.ListCreateAPIView):
+    queryset = Campaign.objects.all()
+    serializer_class = CampaignSerializer
