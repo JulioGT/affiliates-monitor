@@ -6,10 +6,12 @@ import { ClimbingBoxLoader } from 'react-spinners';
 // Layout Blueprints
 
 import {
+  LeftSidebar,
   PresentationLayout
 } from './layout-blueprints';
 
 const PageLoginBasic = lazy(() => import('./pages/PageLoginBasic'));
+const DashboardClicks = lazy(() => import('./pages/DashboardClicks'));
 
 const fakeAuth = {
   isAuthenticated: !!localStorage.getItem('auth'),
@@ -26,7 +28,7 @@ const fakeAuth = {
 };
 
 const Routes = (props) => {
-
+  console.log(props);
   const pageVariants = {
     initial: {
       opacity: 0,
@@ -64,16 +66,43 @@ const Routes = (props) => {
     );
   };
 
+  const returnLocationComponent = () => {
+    if(props.auth){
+      switch(props.auth.location){
+        case 'affiliatesDashboard':
+          return (
+            <LeftSidebar>
+              <DashboardClicks />
+            </LeftSidebar>
+          )
+          break;
+        default:
+          return(
+            <PresentationLayout>
+              <PageLoginBasic />  
+            </PresentationLayout>
+          )
+        break;
+      }
+    }
+    return(
+      <PresentationLayout>
+        <PageLoginBasic />  
+      </PresentationLayout>
+    )
+  }
+
   return (
     <AnimatePresence>
       <Suspense fallback={<SuspenseLoading />}>
-          
-            <PresentationLayout>
-              
-                 <PageLoginBasic />
-                
-            </PresentationLayout>
-          
+          {returnLocationComponent()}
+          {props.auth && props.auth.location === 'affiliatesDashboard' ? 
+            (
+              <LeftSidebar>
+                <DashboardClicks />
+              </LeftSidebar>
+            ) : ''
+          }
       </Suspense>
     </AnimatePresence>
   );

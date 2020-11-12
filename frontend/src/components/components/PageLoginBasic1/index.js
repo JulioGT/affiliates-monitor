@@ -23,9 +23,9 @@ const LivePreviewExample = (props) => {
     props.signIn(raw);
   };
 
-  if (props.auth && props.auth.isAuthenticated) {
-    window.location = '/DashboardCommerce';
-  }
+  // if (props.auth && props.auth.isAuthenticated) {
+  //   window.location = '/DashboardCommerce';
+  // }
 
   return (
     <>

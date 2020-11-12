@@ -2,7 +2,7 @@ import axios from 'axios';
 
 export const signIn = (credentials) => {
   const {email} = JSON.parse(credentials);
-  console.log(email);
+  // console.log(credentials);
   let myHeaders = new Headers();
   myHeaders.append('Content-Type', 'application/json');
   myHeaders.append(
@@ -28,6 +28,7 @@ export const signIn = (credentials) => {
     fetch(`${process.env.REACT_APP_LOGIN_URL}`, requestOptions)
       .then((response) => response.json())
       .then((resp) => {
+        // console.log(resp);
         if (resp.message) {
           dispatch({
             type: 'LOGIN_ERROR',
@@ -42,6 +43,7 @@ export const signIn = (credentials) => {
             }
           })
             .then((res) => {
+              // console.log(res);
               const loginState = {
                 ...res.data.results[0],
                 email: email,
