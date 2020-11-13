@@ -17,7 +17,7 @@ export const signIn = (credentials) => {
     redirect: 'follow'
   };
 
-  return (dispatch) => {
+  return async (dispatch) => {
     dispatch({
       type: 'LOGIN_LOADING',
       state: {
@@ -35,7 +35,7 @@ export const signIn = (credentials) => {
             errorDetails: resp.message
           });
         } else {
-          axios({
+          return axios({
             method: 'GET',
             url: `${process.env.REACT_APP_API_PROFILES}`,
             headers: {
@@ -49,7 +49,7 @@ export const signIn = (credentials) => {
                 email: email,
                 token: resp.token
               }
-              console.log(loginState.token, loginState.email);
+              // console.log(loginState.token, loginState.email);
               localStorage.setItem('auth', JSON.stringify(loginState));
               dispatch({
                 type: 'LOGIN_SUCCESS',
@@ -68,8 +68,8 @@ export const signIn = (credentials) => {
 };
 
 export const logOut = (token) => {
-  return (dispatch) => {
-    axios({
+  return async (dispatch) => {
+    return axios({
       method: 'POST',
       url: `${process.env.REACT_APP_LOGOUT_URL}`,
       headers: {

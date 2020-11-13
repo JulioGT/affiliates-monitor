@@ -1,18 +1,13 @@
 import React from 'react';
 import clsx from 'clsx';
-
 import { connect } from 'react-redux';
 
 import { setSidebarToggleMobile } from '../../../reducers/ThemeOptions';
-
-// import {
-//   SidebarHeader,
-//   SidebarMenu,
-//   SidebarFooter
-// } from '../../layout-components';
 import {
-    SidebarFooter
-  } from '../../layout-components';
+  SidebarHeader,
+  SidebarMenu,
+  SidebarFooter
+} from '../../layout-components';
 
 const Sidebar = (props) => {
   const toggleSidebarMobile = () => {
@@ -32,9 +27,9 @@ const Sidebar = (props) => {
         className={clsx('app-sidebar', sidebarStyle, {
           'app-sidebar--shadow': sidebarShadow
         })}>
-        {/* <SidebarHeader /> */}
+        <SidebarHeader />
         <div className="app-sidebar--content">
-          {/* <SidebarMenu /> */}
+          <SidebarMenu />
         </div>
         {sidebarFooter && <SidebarFooter />}
       </div>

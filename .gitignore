@@ -3,6 +3,7 @@
 # dependencies
 /node_modules
 /frontend/node_modules
+/frontend/static/frontend/*
 /.pnp
 .pnp.js
 
@@ -13,6 +14,7 @@
 /build
 /frontend/static
 /frontend/.env
+/frontend/yarn.lock
 
 # misc
 .DS_Store

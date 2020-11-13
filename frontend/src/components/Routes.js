@@ -96,13 +96,13 @@ const Routes = (props) => {
     <AnimatePresence>
       <Suspense fallback={<SuspenseLoading />}>
           {returnLocationComponent()}
-          {props.auth && props.auth.location === 'affiliatesDashboard' ? 
+          {/* {props.auth && props.auth.location === 'affiliatesDashboard' ? 
             (
               <LeftSidebar>
                 <DashboardClicks />
               </LeftSidebar>
             ) : ''
-          }
+          } */}
       </Suspense>
     </AnimatePresence>
   );

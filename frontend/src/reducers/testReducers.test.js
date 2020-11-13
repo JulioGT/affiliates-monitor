@@ -4,7 +4,7 @@ import authReducer from './authReducer.js';
 const ls = localStorage.getItem('state')
   ? JSON.parse(localStorage.getItem('state'))
   : undefined;
-// console.log(auth);
+
 const initState = {
   useremail: ls ? ls.auth.useremail : '',
   password: '',
@@ -19,36 +19,39 @@ const initState = {
 };
 
 describe('Auth Reducer', () => {
-  it('Should return default state', () => {
+  it('Should return default state (location: "login")', () => {
+    const post = {...initState, location: 'login'}
     const newState = authReducer(initState, {});
-    expect(newState).toEqual(initState);
+    expect(newState).toEqual(post);
   });
 
-  it('Should return isAuthenticated = true if LOGIN SUCCESS', () => {
-    const posts = { ...initState, authError: null, isAuthenticated: true };
-    const newState = authReducer(undefined, {
+  it('Should return location: "affiliatesDashboard" if LOGIN SUCCESS', () => {
+    const postsSuccess = { ...initState, authError: null, isAuthenticated: true, location: 'affiliatesDashboard' };
+    const newStateSuccess = authReducer(undefined, {
       type: 'LOGIN_SUCCESS',
-      state: { ...initState, authError: null, isAuthenticated: true }
+      state: {}
     });
-    expect(newState).toEqual(posts);
+    expect(newStateSuccess).toEqual(postsSuccess);
   });
 
   it('Should return authError if LOGIN ERROR', () => {
-    const post = {
-      ...initState,
-      authError: 'Login Failed',
-      isAuthenticated: false,
-      token: null
-    };
+    const post = {...initState, authError: 'Login Failed', isAuthenticated: false, token: null, location: 'login' };
     const newState = authReducer(undefined, {
       type: 'LOGIN_ERROR',
-      state: {
-        ...initState,
-        authError: 'Login failed',
-        isAuthenticated: false,
-        token: null
-      }
+      state: {}
     });
     expect(newState).toEqual(post);
   });
+
+  it('Should return location: "login" when LOGIN LOADING', () => {
+    const post = { ...initState, authError: null, isAuthenticated: false, location: 'login' }
+    const newState =  authReducer(undefined, { type: 'LOGIN_LOADING', state: {}});
+    expect(newState).toEqual(post);
+  })
+
+  it('should return token: null when LOGOUT', () => {
+    const post = { ...initState, authError: null, isAuthenticated: false, token: null, image: null, location: 'login'}
+    const newState = authReducer(undefined, { type: 'LOG_OUT' , state: {}});
+    expect(newState).toEqual(post);
+  })
 });
