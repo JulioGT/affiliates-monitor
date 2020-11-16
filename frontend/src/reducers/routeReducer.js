@@ -6,6 +6,7 @@ const initState = {
 };
 
 const accountReducer = (state = initState, action) => {
+  console.log(action.newLocation);
   switch (action.type) {
     
     case 'SET_LOCATION':

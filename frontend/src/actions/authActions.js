@@ -1,23 +1,33 @@
 import axios from 'axios';
+import 'regenerator-runtime/runtime';
 
 export const signIn = (credentials) => {
   const {email} = JSON.parse(credentials);
   // console.log(credentials);
-  let myHeaders = new Headers();
-  myHeaders.append('Content-Type', 'application/json');
-  myHeaders.append(
-    'Cookie',
-    'csrftoken=4bI7Q82EiKpReY68yzqnVcfokOMQlUUiEXBCnywbyrFMRNEHIUkWH0sQgVARbRz5'
-  );
+  // let myHeaders = new Headers();
+  // myHeaders.append('Content-Type', 'application/json');
+  // myHeaders.append(
+  //   'Cookie',
+  //   'csrftoken=4bI7Q82EiKpReY68yzqnVcfokOMQlUUiEXBCnywbyrFMRNEHIUkWH0sQgVARbRz5'
+  // );
 
-  var requestOptions = {
+  // var requestOptions = {
+  //   method: 'POST',
+  //   headers: myHeaders,
+  //   body: credentials,
+  //   redirect: 'follow'
+  // };
+
+  var config = {
     method: 'POST',
-    headers: myHeaders,
-    body: credentials,
-    redirect: 'follow'
+    url: `${process.env.REACT_APP_LOGIN_URL}`,
+    headers: { 
+      'Content-Type': 'application/json'
+    },
+    data : credentials
   };
 
-  return (dispatch) => {
+  return async (dispatch) => {
     dispatch({
       type: 'LOGIN_LOADING',
       state: {
@@ -25,8 +35,9 @@ export const signIn = (credentials) => {
       }
     });
 
-    fetch(`${process.env.REACT_APP_LOGIN_URL}`, requestOptions)
-      .then((response) => response.json())
+    // fetch(`${process.env.REACT_APP_LOGIN_URL}`, requestOptions)
+    return await axios(config)
+      // .then((response) => response.json())
       .then((resp) => {
         // console.log(resp);
         if (resp.message) {
@@ -39,7 +50,7 @@ export const signIn = (credentials) => {
             method: 'GET',
             url: `${process.env.REACT_APP_API_PROFILES}`,
             headers: {
-              Authorization: 'Token '.concat(resp.token)
+              Authorization: 'Token '.concat(resp.data.token)
             }
           })
             .then((res) => {

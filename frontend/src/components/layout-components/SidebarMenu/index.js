@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import clsx from 'clsx';
 import { Collapse } from 'reactstrap';
 import PerfectScrollbar from 'react-perfect-scrollbar';
@@ -6,6 +6,7 @@ import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import { setSidebarToggleMobile } from '../../../reducers/ThemeOptions';
 import SidebarUserbox from '../SidebarUserbox';
+import { setNewLocation } from '../../../actions/routeActions';
 
 import {
   Users,
@@ -15,7 +16,13 @@ import {
 } from 'react-feather';
 
 const SidebarMenu = (props) => {
-  const { setSidebarToggleMobile, sidebarUserbox } = props;
+
+  const [changeLocation, setChangeNewLocation] = useState('affiliatesDashboard');
+  const { setSidebarToggleMobile, sidebarUserbox, setNewLocation } = props;
+
+  useEffect(() => {
+    setNewLocation(changeLocation);
+  }, [changeLocation]);
 
   const toggleSidebarMobile = () => {
     setSidebarToggleMobile(false);
@@ -62,6 +69,12 @@ const SidebarMenu = (props) => {
     setAccountsOpen(!accountsOpen);
     event.preventDefault();
   };
+
+  const changeToNewLocation = (e, location) => {
+    e.preventDefault();
+    toggleSidebarMobile();
+    setChangeNewLocation(location);
+  }
   /* */
   return (
     <>
@@ -90,15 +103,15 @@ const SidebarMenu = (props) => {
                     <ul>
                       <li>
                         <NavLink
-                          onClick={toggleSidebarMobile}
-                          to="/affiliatesDashboard">
+                          onClick={(e) => changeToNewLocation(e, 'affiliatesDashboard')}
+                          to="">
                           Clicks
                         </NavLink>
                       </li>
                       <li>
                         <NavLink
-                          onClick={toggleSidebarMobile}
-                          to="/dashboardCommerce">
+                          onClick={(e) => changeToNewLocation(e, 'affiliatesConversionDashboard')}
+                          to="">
                           Conversions
                         </NavLink>
                       </li>
@@ -267,8 +280,12 @@ const mapStateToProps = (state) => ({
   sidebarToggleMobile: state.ThemeOptions.sidebarToggleMobile
 });
 
-const mapDispatchToProps = (dispatch) => ({
-  setSidebarToggleMobile: (enable) => dispatch(setSidebarToggleMobile(enable))
-});
+const mapDispatchToProps = (dispatch) => {
+  return {
+    setSidebarToggleMobile: (enable) => dispatch(setSidebarToggleMobile(enable))
+    ,
+    setNewLocation: (location) => dispatch(setNewLocation(location))
+  };
+}
 
 export default connect(mapStateToProps, mapDispatchToProps)(SidebarMenu);

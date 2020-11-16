@@ -58,6 +58,7 @@
   },
   "devDependencies": {
     "file-loader": "^6.2.0",
+    "regenerator-runtime": "^0.13.7",
     "url-loader": "^4.1.1"
   }
 }

@@ -28,7 +28,7 @@ const fakeAuth = {
 };
 
 const Routes = (props) => {
-  console.log(props);
+  
   const pageVariants = {
     initial: {
       opacity: 0,
@@ -85,9 +85,9 @@ const Routes = (props) => {
           break;
         default:
           return(
-            <PresentationLayout>
-              <PageLoginBasic />  
-            </PresentationLayout>
+            <LeftSidebar>
+              <DashboardClicks />  
+            </LeftSidebar>
           )
         break;
       }
