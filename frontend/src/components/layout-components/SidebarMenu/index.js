@@ -17,7 +17,9 @@ import {
 const SidebarMenu = (props) => {
   const { setSidebarToggleMobile, sidebarUserbox } = props;
 
-  const toggleSidebarMobile = () => setSidebarToggleMobile(false);
+  const toggleSidebarMobile = () => {
+    setSidebarToggleMobile(false);
+  }
 
   const [dashboardOpen, setDashboardOpen] = useState(false);
   const toggleDashboard = (event) => {
@@ -89,15 +91,15 @@ const SidebarMenu = (props) => {
                       <li>
                         <NavLink
                           onClick={toggleSidebarMobile}
-                          to="/DashboardClicks">
+                          to="/affiliatesDashboard">
                           Clicks
                         </NavLink>
                       </li>
                       <li>
                         <NavLink
                           onClick={toggleSidebarMobile}
-                          to="/DashboardCommerce">
-                          Commerce
+                          to="/dashboardCommerce">
+                          Conversions
                         </NavLink>
                       </li>
                     </ul>

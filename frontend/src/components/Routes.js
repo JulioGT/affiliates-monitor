@@ -76,6 +76,13 @@ const Routes = (props) => {
             </LeftSidebar>
           )
           break;
+        case 'affiliatesConversionDashboard':
+          return(
+            <LeftSidebar>
+              <DashboardClicks />
+            </LeftSidebar>
+          )
+          break;
         default:
           return(
             <PresentationLayout>

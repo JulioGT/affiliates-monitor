@@ -17,7 +17,7 @@ export const signIn = (credentials) => {
     redirect: 'follow'
   };
 
-  return async (dispatch) => {
+  return (dispatch) => {
     dispatch({
       type: 'LOGIN_LOADING',
       state: {
@@ -35,7 +35,7 @@ export const signIn = (credentials) => {
             errorDetails: resp.message
           });
         } else {
-          return axios({
+          axios({
             method: 'GET',
             url: `${process.env.REACT_APP_API_PROFILES}`,
             headers: {
