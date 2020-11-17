@@ -39,7 +39,6 @@ export const signIn = (credentials) => {
     return await axios(config)
       // .then((response) => response.json())
       .then((resp) => {
-        // console.log(resp);
         if (resp.message) {
           dispatch({
             type: 'LOGIN_ERROR',
@@ -58,7 +57,7 @@ export const signIn = (credentials) => {
               const loginState = {
                 ...res.data.results[0],
                 email: email,
-                token: resp.token
+                token: resp.data.token
               }
               // console.log(loginState.token, loginState.email);
               localStorage.setItem('auth', JSON.stringify(loginState));
@@ -75,6 +74,10 @@ export const signIn = (credentials) => {
             });
         }
       })
+      .catch((err) => {
+        console.log(err);
+        dispatch({ type: 'LOGIN_ERROR', err });
+      });
   }
 };
 
@@ -112,4 +115,15 @@ export const logOut = (token) => {
         });
       });
   };
+};
+
+export const setNewLocation = (newLocation) => {
+  // console.log(newLocation);
+  return (dispatch) => {
+    dispatch({
+      type: 'SET_LOCATION',
+      newLocation: newLocation
+    });
+
+  }
 };

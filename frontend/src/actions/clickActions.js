@@ -1,6 +1,7 @@
 import axios from 'axios';
 
 export const displayNextClickSet = (token, url) => {
+  // console.log(token,url);
   return (dispatch) => {
     axios({
       method: 'GET',

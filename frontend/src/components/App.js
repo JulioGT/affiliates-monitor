@@ -260,6 +260,7 @@ library.add(
 
 const saveToLocalStorage = (state) => { 
   try {
+    // console.log(state);
     const serializedState = JSON.stringify(state);
     localStorage.setItem('state', serializedState);
   } catch (e) {
@@ -268,6 +269,7 @@ const saveToLocalStorage = (state) => {
 };
 
 const store = configureStore();
+// console.log(store.getState());
 store.subscribe(() => saveToLocalStorage(store.getState()));
 
 class App extends Component { 

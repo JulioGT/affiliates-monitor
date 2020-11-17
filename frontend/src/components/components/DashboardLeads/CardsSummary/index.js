@@ -58,7 +58,7 @@ const LivePreviewExample = (props) => {
                   <small className="text-white-50 d-block mb-1 text-uppercase">
                     Events
                   </small>
-                  <span className="font-size-xxl mt-1">{eventCounter + leadCounter}</span>
+                  <span className="font-size-xxl mt-1">{eventCounter + clickCounter}</span>
                 </div>
                 <div className="ml-auto">
                   <div className="bg-white text-center text-success font-size-xl d-50 rounded-circle btn-icon">
@@ -71,7 +71,7 @@ const LivePreviewExample = (props) => {
                   icon={['fas', 'arrow-up']}
                   className="text-success"
                 />
-                <span className="text-success px-1">15.4%</span>
+                <span className="text-success px-1">25.4%</span>
                 <span className="text-white-50">increase this month</span>
               </div>
             </CardBody>
@@ -83,10 +83,10 @@ const LivePreviewExample = (props) => {
               <div className="align-box-row align-items-start">
                 <div className="font-weight-bold">
                   <small className="text-white-50 d-block mb-1 text-uppercase">
-                    Clicks
+                    Leads
                   </small>
                   <span className="font-size-xxl mt-1">
-                    {clickCounter}
+                    {leadCounter}
                   </span>
                 </div>
                 <div className="ml-auto">
@@ -100,7 +100,7 @@ const LivePreviewExample = (props) => {
                   icon={['fas', 'arrow-up']}
                   className="text-success"
                 />
-                <span className="text-success px-1">12.65%</span>
+                <span className="text-success px-1">22.65%</span>
                 <span className="text-white-50">same as before</span>
               </div>
             </CardBody>
@@ -114,7 +114,7 @@ const LivePreviewExample = (props) => {
                   <small className="text-white-50 d-block mb-1 text-uppercase">
                     CTR
                   </small>
-                  <span className="font-size-xxl mt-1">29%</span>
+                  <span className="font-size-xxl mt-1">39%</span>
                 </div>
                 <div className="ml-auto">
                   <div className="bg-white text-center text-warning font-size-xl d-50 rounded-circle btn-icon">
@@ -127,7 +127,7 @@ const LivePreviewExample = (props) => {
                   icon={['fas', 'arrow-up']}
                   className="text-warning"
                 />
-                <span className="text-warning px-1">4.2%</span>
+                <span className="text-warning px-1">5.2%</span>
                 <span className="text-white-50">lower order numbers</span>
               </div>
             </CardBody>
@@ -154,7 +154,7 @@ const LivePreviewExample = (props) => {
                   icon={['fas', 'arrow-up']}
                   className="text-warning"
                 />
-                <span className="text-warning px-1">4.2%</span>
+                <span className="text-warning px-1">5.2%</span>
                 <span className="text-white-50">lower order numbers</span>
               </div>
             </CardBody>

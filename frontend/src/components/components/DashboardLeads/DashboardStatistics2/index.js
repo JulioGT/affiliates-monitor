@@ -14,34 +14,34 @@ const LivePreviewExample = (props) => {
   const [chartDashboardStatistics2AOptions, setChartDashboardStatistics2AOptions] = useState({});
   const [chartDashboardStatistics2BOptions, setChartDashboardStatistics2BOptions] = useState({});
 
-  const displayData = (click) => {
-    let clickDate = [];
-    let clicksArray = [];
-    let clicksIncome = 0;
+  const displayData = (lead) => {
+    let leadDate = [];
+    let leadsArray = [];
+    let leadsIncome = 0;
     let eventsArray = [];
     let eventsIncome = 0;
     let AData = [];
     let BData = [];
     let AOptions = {};
     let BOptions = {};
-    let clickMonths = {};
+    let leadMonths = {};
     let eventMonths = {};
-    let clickMonthsArray = [];
+    let leadMonthsArray = [];
     let eventMonthsArray = [];
     let pivotDate = new Date('');
 
-    if(click && click.data){
-      click.data.results.forEach(item => {
+    if(lead && lead.data){
+      lead.data.results.forEach(item => {
         switch(item.event){
-          case "click":
-            clicksArray.push(item);
-            if(item.cost !== null ) clicksIncome+= item.cost;
+          case "lead":
+            leadsArray.push(item);
+            if(item.cost !== null ) leadsIncome+= item.cost;
 
-            if(`${new Date(item.createdDate).getMonth()}` in clickMonths){
-              clickMonths[`${new Date(item.createdDate).getMonth()}`] += 1;
+            if(`${new Date(item.createdDate).getMonth()}` in leadMonths){
+              leadMonths[`${new Date(item.createdDate).getMonth()}`] += 1;
             } else {
-              clickMonths[`${new Date(item.createdDate).getMonth()}`] = 1;
-              clickMonthsArray.push(monthsOfTheYear[`${new Date(item.createdDate).getMonth()}`]);
+              leadMonths[`${new Date(item.createdDate).getMonth()}`] = 1;
+              leadMonthsArray.push(monthsOfTheYear[`${new Date(item.createdDate).getMonth()}`]);
             }
           break;
           default:
@@ -58,21 +58,21 @@ const LivePreviewExample = (props) => {
         }
 
         pivotDate = new Date(item.createdDate);
-        clickDate.push(pivotDate);
+        leadDate.push(pivotDate);
       })
 
       BData.push({
-        name: 'Clicks',
-        data: [...Object.values(clickMonths)]
+        name: 'Leads',
+        data: [...Object.values(leadMonths)]
       },
       {
         name: 'Events',
         data: [...Object.values(eventMonths)]
       });
-      // console.log(...Object.values(clickMonthsArray));
+      // console.log(...Object.values(leadMonthsArray));
       AData.push({
-        name: 'Clicks',
-        data: [0, clicksIncome]
+        name: 'Leads',
+        data: [0, leadsIncome]
       },
       {
         name: 'Events',
@@ -116,9 +116,9 @@ const LivePreviewExample = (props) => {
         legend: {
           show: false
         },
-        labels: [...Object.values(clickMonthsArray)]
+        labels: [...Object.values(leadMonthsArray)]
       }
-      // console.log(clicksArray.length, eventsArray.length);
+      // console.log(leadsArray.length, eventsArray.length);
 
       BOptions = {
         chart: {
@@ -240,7 +240,7 @@ const LivePreviewExample = (props) => {
             <CardHeader>
               <div className="card-header--title">
                 <h4 className="font-size-lg mb-0 py-2 font-weight-bold">
-                  Impressions & Clicks
+                  Impressions & Leads
                 </h4>
               </div>
               <div className="card-header--actions">
@@ -284,7 +284,7 @@ const LivePreviewExample = (props) => {
                 </Col>
                 <Col md="6">
                   <div className="p-3">
-                    <div className="mb-1 font-weight-bold">Clicks</div>
+                    <div className="mb-1 font-weight-bold">Leads</div>
                     <Progress
                       animated
                       className="progress-xs progress-animated-alt opacity-6"

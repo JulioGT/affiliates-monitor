@@ -205,7 +205,7 @@ const LivePreviewExample = (props) => {
         <CardHeader className="d-flex align-items-center justify-content-between card-header-alt p-4">
           <div className={clsx('', { 'd-none': searchOpen })}>
             <h6 className="font-weight-bold font-size-lg mb-0 text-black">
-              All Clicks
+              All Leads
             </h6>
           </div>
           <div
@@ -401,7 +401,7 @@ const LivePreviewExample = (props) => {
               <Table responsive className="table-alternate-spaced mb-0">
                 <thead className="thead-light text-capitalize font-size-sm font-weight-bold">
                   <tr>
-                    <th className="text-left px-4">Click ID</th>
+                    <th className="text-left px-4">LEAD ID</th>
                     <th className="text-center">CREATED</th>
                     <th className="text-left">URL</th>
                     <th className="text-left">IP</th>
@@ -459,7 +459,7 @@ const LivePreviewExample = (props) => {
               <div className="bg-composed-wrapper--image bg-composed-img-1" />
               <div className="bg-composed-wrapper--content text-center text-light p-3">
                 <h5 className="mb-2 font-size-xl font-weight-bold">
-                  Click Details
+                  Lead Details
                 </h5>
                 <p className="mb-0 font-size-lg opacity-8">
                   Here is the information you have posted from your sources to
@@ -476,7 +476,7 @@ const LivePreviewExample = (props) => {
                 </Row>
                 <Row>
                   <Col md="6">
-                    <Label htmlFor="leadid">Click ID</Label>
+                    <Label htmlFor="leadid">Lead ID</Label>
                     <Input
                       type="text"
                       name="leadid"
@@ -534,7 +534,7 @@ const LivePreviewExample = (props) => {
               </div>
               <div className="divider mb-3"></div>
               <PerfectScrollbar className="scroll-area-sm mb-2">
-                <h6 className="font-weight-bold">Click Information</h6>
+                <h6 className="font-weight-bold">Lead Information</h6>
                 <Form className="mr-3">
                   <Label htmlFor="fname">First Name</Label>
                   <Input

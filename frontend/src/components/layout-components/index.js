@@ -14,6 +14,7 @@ export { default as Footer } from './Footer';
 export { default as ThemeConfigurator } from './ThemeConfigurator';
 
 export { default as PageTitleClicks } from './PageTitleClicks';
+export { default as PageTitleLeads } from './PageTitleClicks';
 export { default as PageTitleUsers } from './PageTitleUsers';
 export { default as PageTitleCampaigns } from './PageTitleCampaigns';
 export { default as PageTitleVerticals } from './PageTitleVerticals';

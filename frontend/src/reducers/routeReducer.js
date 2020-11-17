@@ -2,15 +2,16 @@
 const initState = {
   accountError: false,
   accountLoading: true,
-  accountCreated: false
+  accountCreated: false,
+  location: 'affiliatesDashboard'
 };
 
-const accountReducer = (state = initState, action) => {
+const routeReducer = (state = initState, action) => {
   console.log(action.newLocation);
   switch (action.type) {
     
     case 'SET_LOCATION':
-      // console.log(action.currentAccount);
+      console.log(action, state);
       return {
         ...state,
         authError: null,
@@ -28,4 +29,4 @@ const accountReducer = (state = initState, action) => {
   }
 };
 
-export default accountReducer;
+export default routeReducer;

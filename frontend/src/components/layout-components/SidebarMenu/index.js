@@ -6,7 +6,7 @@ import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import { setSidebarToggleMobile } from '../../../reducers/ThemeOptions';
 import SidebarUserbox from '../SidebarUserbox';
-import { setNewLocation } from '../../../actions/routeActions';
+import { setNewLocation } from '../../../actions/authActions';
 
 import {
   Users,
@@ -17,7 +17,7 @@ import {
 
 const SidebarMenu = (props) => {
 
-  const [changeLocation, setChangeNewLocation] = useState('affiliatesDashboard');
+  const [changeLocation, setChangeNewLocation] = props.auth && props.auth.location ? useState(props.auth.location) : useState('affiliatesLeadsDashboard');
   const { setSidebarToggleMobile, sidebarUserbox, setNewLocation } = props;
 
   useEffect(() => {
@@ -69,7 +69,7 @@ const SidebarMenu = (props) => {
     setAccountsOpen(!accountsOpen);
     event.preventDefault();
   };
-
+  //Triggers an Action to change the component (clicksDashboard, LeadsDashboard, campaigns, etc)
   const changeToNewLocation = (e, location) => {
     e.preventDefault();
     toggleSidebarMobile();
@@ -110,9 +110,9 @@ const SidebarMenu = (props) => {
                       </li>
                       <li>
                         <NavLink
-                          onClick={(e) => changeToNewLocation(e, 'affiliatesConversionDashboard')}
+                          onClick={(e) => changeToNewLocation(e, 'affiliatesLeadsDashboard')}
                           to="">
-                          Conversions
+                          Leads
                         </NavLink>
                       </li>
                     </ul>
@@ -277,7 +277,8 @@ const SidebarMenu = (props) => {
 
 const mapStateToProps = (state) => ({
   sidebarUserbox: state.ThemeOptions.sidebarUserbox,
-  sidebarToggleMobile: state.ThemeOptions.sidebarToggleMobile
+  sidebarToggleMobile: state.ThemeOptions.sidebarToggleMobile,
+  auth: state.auth
 });
 
 const mapDispatchToProps = (dispatch) => {

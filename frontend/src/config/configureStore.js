@@ -3,6 +3,7 @@ import thunkMiddleware from 'redux-thunk';
 import reducers from '../reducers';
 // import accountReducer from '../reducers/accountReducer';
 import authReducer from '../reducers/authReducer';
+// import routeReducer from '../reducers/routeReducer';
 // import userReducer from '../reducers/userReducer';
 // import verticalReducer from 'reducers/verticalReducer';
 // import categoryReducer from 'reducers/categoryReducer';
@@ -10,7 +11,7 @@ import authReducer from '../reducers/authReducer';
 // import affiliateReducer from 'reducers/affiliateReducer';
 // import offerReducer from 'reducers/offerReducer';
 // import campaignReducer from 'reducers/campaignReducer';
-// import clickReducer from 'reducers/clickReducer';
+import clickReducer from '../reducers/clickReducer';
 
 const rootReducer = combineReducers({
   ...reducers
@@ -19,9 +20,10 @@ const rootReducer = combineReducers({
   // advertiser: advertiserReducer,
   // affiliate: affiliateReducer,
   auth: authReducer,
+  // route: routeReducer
   // campaign: campaignReducer,
   // category: categoryReducer,
-  // click: clickReducer,
+  click: clickReducer,
   // offer: offerReducer,
   // user: userReducer,
   // vertical: verticalReducer

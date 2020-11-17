@@ -4,8 +4,8 @@ const ls = localStorage.getItem('state')
 const initState = {
   useremail: ls ? ls.useremail : '',
   password: '',
-  firstname: ls ? ls.firstname : '',
-  lastname: ls ? ls.lastname : '',
+  firstName: ls ? ls.firstname : '',
+  lastName: ls ? ls.lastname : '',
   avatarurl: '',
   authError: null,
   token: ls ? ls.token : '',
@@ -15,7 +15,7 @@ const initState = {
 };
 
 const authReducer = (state = initState, action) => {
-  console.log(action.type);
+  // console.log(state);
   switch (action.type) {
     case 'LOGIN_ERROR':
       if (action.errorDetails) {
@@ -37,6 +37,7 @@ const authReducer = (state = initState, action) => {
         location: 'login'
       };
     case 'LOGIN_SUCCESS':
+      localStorage.setItem('state', JSON.stringify(state));
       return {
         ...state,
         ...action.state,
@@ -52,6 +53,15 @@ const authReducer = (state = initState, action) => {
         isAuthenticated: false,
         location: 'login'
       };
+    case 'SET_LOCATION':
+      localStorage.setItem('state', JSON.stringify(state));
+        return {
+          ...state,
+          ...action.state,
+          authError: null,
+          isAuthenticated: true,
+          location: action.newLocation
+        };
     case 'LOG_OUT':
       localStorage.removeItem('state');
       return {
@@ -67,8 +77,7 @@ const authReducer = (state = initState, action) => {
       return {
         ...state,
         ...action.state,
-        authError: null,
-        location: 'login'
+        authError: null
       };
   }
 };

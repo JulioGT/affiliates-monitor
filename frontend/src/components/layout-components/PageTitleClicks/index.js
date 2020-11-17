@@ -262,7 +262,8 @@ const PageTitleClicks = (props) => {
           style={{ marginTop: '-80px' }}>
           <Col lg="10" xl="9" className="z-over pt-0 pt-lg-4 pb-4 mx-auto">
             <div className="px-4 py-0">
-              <Form onSubmit={(e) => createUserCall(e)}>
+              {/* <Form onSubmit={(e) => createUserCall(e)}> */}
+              <Form onSubmit={(e) => e.preventDefault}>
                 <FormGroup>
                   <Label htmlFor="exampleEmail">Email</Label>
                   <Input
