@@ -83,11 +83,11 @@ const HeaderUserbox = (props) => {
                     Profile settings
                   </NavLinkStrap>
                 </NavItem>
-                <NavItem>
+                {/* <NavItem>
                   <NavLinkStrap href="#/" onClick={(e) => e.preventDefault()}>
                     Active tasks
                   </NavLinkStrap>
-                </NavItem>
+                </NavItem> */}
               </Nav>
             </ListGroupItem>
             <ListGroupItem className="bg-transparent p-0">

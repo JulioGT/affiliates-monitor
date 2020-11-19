@@ -15,13 +15,8 @@ export { default as ThemeConfigurator } from './ThemeConfigurator';
 
 export { default as PageTitleClicks } from './PageTitleClicks';
 export { default as PageTitleLeads } from './PageTitleClicks';
+export { default as PageTitleCampaigns } from './PageTitleClicks';
 export { default as PageTitleUsers } from './PageTitleUsers';
-export { default as PageTitleCampaigns } from './PageTitleCampaigns';
-export { default as PageTitleVerticals } from './PageTitleVerticals';
-export { default as VerticalModalContent } from './PageTitleVerticals/VerticalModalContent';
-export { default as PageTitleOffers } from './PageTitleOffers';
-export { default as PageTitleAdvertisers } from './PageTitleAdvertisers';
+// export { default as PageTitleCampaigns } from './PageTitleCampaigns';
 export { default as PageTitleAffiliates } from './PageTitleAffiliates';
 export { default as ModalAffiliates } from './PageTitleAffiliates/ModalAffiliates';
-export { default as ModalOffers } from './PageTitleOffers/ModalOffers';
-export { default as AdvertiserModalContent } from './PageTitleAdvertisers/AdvertiserModalContent';

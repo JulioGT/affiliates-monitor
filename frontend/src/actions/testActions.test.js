@@ -1,6 +1,6 @@
 import thunk from "redux-thunk";
 import * as PostsActionCreators from "./authActions";
-import * as RouteActions from "./routeActions"
+// import * as RouteActions from "./routeActions"
 import fetchMock from 'fetch-mock'
 import expect from "expect";
 import moxios from "moxios";
@@ -126,17 +126,31 @@ describe("Test Auth Actions", () => {
 
 });
 
-
 /* BEGIN SET LOCATION/ROUTS SECTION */
 describe("Test Location Routes", () => { 
   it("sets the new location/route", () => {
     // Initialize mockstore with empty state
     const initialState = {};
     const store = mockStore(initialState);
-    const newLocation = "affiliatesConversionDashboard";
+    const newLocation = "affiliatesLeadsDashboard";
 
     // Dispatch the action
-    store.dispatch(RouteActions.setNewLocation(newLocation));
+    store.dispatch(PostsActionCreators.setNewLocation(newLocation));
+
+    // Test if your store dispatched the expected actions
+    const actions = store.getActions()
+    const expectedPayload = { type: 'SET_LOCATION', newLocation };
+    expect(actions).toEqual([expectedPayload]);
+  });
+
+  it("sets the new location/route", () => {
+    // Initialize mockstore with empty state
+    const initialState = {};
+    const store = mockStore(initialState);
+    const newLocation = "affiliatesCampaignsDashboard";
+
+    // Dispatch the action
+    store.dispatch(PostsActionCreators.setNewLocation(newLocation));
 
     // Test if your store dispatched the expected actions
     const actions = store.getActions()
@@ -146,3 +160,8 @@ describe("Test Location Routes", () => {
 }); 
 /* END SET LOCATION/ROUTS SECTION */
 
+/* BEGIN CAMPAIGN *
+describe("Test Campaign section", () => {
+  it("sets")
+})
+/* END CAMPAIGN */

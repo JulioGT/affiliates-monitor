@@ -57,7 +57,8 @@ export const signIn = (credentials) => {
               const loginState = {
                 ...res.data.results[0],
                 email: email,
-                token: resp.data.token
+                token: resp.data.token,
+                location: 'affiliatesDashboard'
               }
               // console.log(loginState.token, loginState.email);
               localStorage.setItem('auth', JSON.stringify(loginState));

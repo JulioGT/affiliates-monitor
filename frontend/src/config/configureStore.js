@@ -10,7 +10,7 @@ import authReducer from '../reducers/authReducer';
 // import advertiserReducer from 'reducers/advertiserReducer';
 // import affiliateReducer from 'reducers/affiliateReducer';
 // import offerReducer from 'reducers/offerReducer';
-// import campaignReducer from 'reducers/campaignReducer';
+import campaignReducer from '../reducers/campaignReducer';
 import clickReducer from '../reducers/clickReducer';
 
 const rootReducer = combineReducers({
@@ -21,7 +21,7 @@ const rootReducer = combineReducers({
   // affiliate: affiliateReducer,
   auth: authReducer,
   // route: routeReducer
-  // campaign: campaignReducer,
+  campaign: campaignReducer,
   // category: categoryReducer,
   click: clickReducer,
   // offer: offerReducer,

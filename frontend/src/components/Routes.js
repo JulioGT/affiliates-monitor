@@ -4,32 +4,18 @@ import { AnimatePresence } from 'framer-motion';
 import { ClimbingBoxLoader } from 'react-spinners';
 
 // Layout Blueprints
-
 import {
   LeftSidebar,
   PresentationLayout
 } from './layout-blueprints';
+import { loadFromLocalStorage } from '../utils/ScrollToTop';
 
 const PageLoginBasic = lazy(() => import('./pages/PageLoginBasic'));
 const DashboardClicks = lazy(() => import('./pages/DashboardClicks'));
 const DashboardLeads = lazy(() => import('./pages/DashboardLeads'));
-
-const fakeAuth = {
-  isAuthenticated: !!localStorage.getItem('auth'),
-  authenticate(cb) {
-    fakeAuth.isAuthenticated = true;
-    setTimeout(cb, 100); // fake async
-  },
-  signout(cb) {
-    fakeAuth.isAuthenticated = false;
-    localStorage.removeItem('auth');
-    localStorage.removeItem('state');
-    setTimeout(cb, 100);
-  }
-};
+const DashboardCampaigns = lazy(() => import('./pages/DashboardCampaigns'));
 
 const Routes = (props) => {
-  // console.log(props);
   const pageVariants = {
     initial: {
       opacity: 0,
@@ -117,28 +103,23 @@ const Routes = (props) => {
               </LeftSidebar>
             ) : ''
           }
+          {props.auth && props.auth.location === 'affiliatesCampaignsDashboard' ? 
+            (
+              <LeftSidebar>
+                <DashboardCampaigns />
+              </LeftSidebar>
+            ) : ''
+          }
       </Suspense>
     </AnimatePresence>
   );
-};
-
-const loadFromLocalStorage = () => {
-  try {
-    const serializedState = localStorage.getItem('state');
-
-    if (serializedState === null) return undefined;
-    return JSON.parse(serializedState);
-  } catch (e) {
-    console.log(e);
-    return undefined;
-  }
 };
 
 const mapStateToProps = (state) => {
   const persistedState = loadFromLocalStorage();
   return {
     ...state,
-    auth: persistedState ? persistedState.auth : null,
+    auth: persistedState ? persistedState : null,
     authError: state.auth.authError
   };
 };

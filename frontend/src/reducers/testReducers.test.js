@@ -8,19 +8,20 @@ const ls = localStorage.getItem('state')
 const initState = {
   useremail: ls ? ls.auth.useremail : '',
   password: '',
-  firstname: ls ? ls.auth.firstname : '',
-  lastname: ls ? ls.auth.lastname : '',
+  firstName: ls ? ls.auth.firstname : '',
+  lastName: ls ? ls.auth.lastname : '',
   avatarurl: '',
   authError: null,
   token: ls ? ls.auth.token : '',
   isAuthenticated: ls ? ls.auth.isAuthenticated : '',
   image: ls ? ls.auth.image : '',
-  authError: null
+  authError: null,
+  location: 'login'
 };
 
 describe('Auth Reducer', () => {
   it('Should return default state (location: "login")', () => {
-    const post = {...initState, location: 'login'}
+    const post = {...initState}
     const newState = authReducer(initState, {});
     expect(newState).toEqual(post);
   });
@@ -52,6 +53,18 @@ describe('Auth Reducer', () => {
   it('should return token: null when LOGOUT', () => {
     const post = { ...initState, authError: null, isAuthenticated: false, token: null, image: null, location: 'login'}
     const newState = authReducer(undefined, { type: 'LOG_OUT' , state: {}});
+    expect(newState).toEqual(post);
+  })
+
+  it('should return location: affiliatesLeadsDashboard on SET_LOCATION', () => {
+    const post = {...initState,  authError: null, isAuthenticated: true, location: 'affiliatesLeadsDashboard'};
+    const newState = authReducer(undefined, {type: 'SET_LOCATION', newLocation: 'affiliatesLeadsDashboard', state: {}});
+    expect(newState).toEqual(post);
+  })
+
+  it('should return location: affiliatesCampaignsDashboard on SET_LOCATION', () => {
+    const post = {...initState,  authError: null, isAuthenticated: true, location: 'affiliatesCampaignsDashboard'};
+    const newState = authReducer(undefined, {type: 'SET_LOCATION', newLocation: 'affiliatesCampaignsDashboard', state: {}});
     expect(newState).toEqual(post);
   })
 });

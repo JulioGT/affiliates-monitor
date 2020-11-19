@@ -35,24 +35,10 @@ const SidebarMenu = (props) => {
   };
 
   /* T U J E Y O */
-  //Expands/Collapses the Advertisers menu option
-  const [advertisersOpen, setAdvertisersOpen] = useState(false);
-  const toggleAdvertisers = (event) => {
-    setAdvertisersOpen(!advertisersOpen);
-    event.preventDefault();
-  };
-
   //Expands/Collapses the Affiliates menu option
   const [affiliatesOpen, setAffiliatesOpen] = useState(false);
   const toggleAffiliates = (event) => {
     setAffiliatesOpen(!affiliatesOpen);
-    event.preventDefault();
-  };
-
-  //Expands/Collapses the Verticals menu option
-  const [verticalsOpen, setVerticalsOpen] = useState(false);
-  const toggleVerticals = (event) => {
-    setVerticalsOpen(!verticalsOpen);
     event.preventDefault();
   };
 
@@ -63,12 +49,6 @@ const SidebarMenu = (props) => {
     event.preventDefault();
   };
 
-  //Expands/Collapses the Accounts menu option
-  const [accountsOpen, setAccountsOpen] = useState(false);
-  const toggleAccounts = (event) => {
-    setAccountsOpen(!accountsOpen);
-    event.preventDefault();
-  };
   //Triggers an Action to change the component (clicksDashboard, LeadsDashboard, campaigns, etc)
   const changeToNewLocation = (e, location) => {
     e.preventDefault();
@@ -84,9 +64,8 @@ const SidebarMenu = (props) => {
           <div className="sidebar-header">
             <span>Navigation menu</span>
           </div>
-          
-              <ul>
-                <li>
+            <ul>
+              <li>
                   <a
                     href="#/"
                     onClick={toggleDashboard}
@@ -118,71 +97,11 @@ const SidebarMenu = (props) => {
                     </ul>
                   </Collapse>
                 </li>
-                
-              </ul>
-              
+            </ul>  
           <div className="sidebar-header">
             <span>Tujeyo</span>
           </div>
           <ul>
-            {/*Accounts*/}
-            <li>
-              <a
-                href="#/"
-                onClick={toggleAccounts}
-                className={clsx({ active: accountsOpen })}>
-                <span className="sidebar-icon">
-                  <Grid />
-                </span>
-                <span className="sidebar-item-label">Accounts</span>
-                <span className="sidebar-icon-indicator">
-                  <ChevronRight />
-                </span>
-              </a>
-              <Collapse isOpen={accountsOpen}>
-                <ul className="pb-0">
-                  {/* <li>
-                    <NavLink onClick={toggleSidebarMobile} to="/accounts">
-                      Accounts
-                    </NavLink>
-                  </li> */}
-                  <li>
-                    <NavLink onClick={toggleSidebarMobile} to="/users">
-                      Users
-                    </NavLink>
-                  </li>
-                </ul>
-              </Collapse>
-            </li>
-            {/*Advertisers*/}
-            <li>
-              <a
-                href="#/"
-                onClick={toggleAdvertisers}
-                className={clsx({ active: advertisersOpen })}>
-                <span className="sidebar-icon">
-                  <Grid />
-                </span>
-                <span className="sidebar-item-label">Advertisers</span>
-                <span className="sidebar-icon-indicator">
-                  <ChevronRight />
-                </span>
-              </a>
-              <Collapse isOpen={advertisersOpen}>
-                <ul className="pb-0">
-                  <li>
-                    <NavLink onClick={toggleSidebarMobile} to="/advertisers">
-                      Advertisers
-                    </NavLink>
-                  </li>
-                  <li>
-                    <NavLink onClick={toggleSidebarMobile} to="/offers">
-                      Offers
-                    </NavLink>
-                  </li>
-                </ul>
-              </Collapse>
-            </li>
             {/*Affiliates*/}
             <li>
               <a
@@ -200,49 +119,14 @@ const SidebarMenu = (props) => {
               <Collapse isOpen={affiliatesOpen}>
                 <ul className="pb-0">
                   <li>
-                    <NavLink onClick={toggleSidebarMobile} to="/affiliates">
-                      Affiliates
-                    </NavLink>
-                  </li>
-                  <li>
-                    <NavLink onClick={toggleSidebarMobile} to="/campaigns">
+                    <NavLink onClick={(e) => changeToNewLocation(e, 'affiliatesCampaignsDashboard')} to="">
                       Campaigns
                     </NavLink>
                   </li>
                 </ul>
               </Collapse>
             </li>
-            {/*ads*/}
 
-            {/*Verticals*/}
-            <li>
-              <a
-                href="#/"
-                onClick={toggleVerticals}
-                className={clsx({ active: verticalsOpen })}>
-                <span className="sidebar-icon">
-                  <Grid />
-                </span>
-                <span className="sidebar-item-label">Verticals</span>
-                <span className="sidebar-icon-indicator">
-                  <ChevronRight />
-                </span>
-              </a>
-              <Collapse isOpen={verticalsOpen}>
-                <ul className="pb-0">
-                  <li>
-                    <NavLink onClick={toggleSidebarMobile} to="/verticals">
-                      Verticals
-                    </NavLink>
-                  </li>
-                  {/* <li>
-                    <NavLink onClick={toggleSidebarMobile} to="/categories">
-                      Categories
-                    </NavLink>
-                  </li> */}
-                </ul>
-              </Collapse>
-            </li>
             {/*My Account*/}
             <li>
               <a
@@ -252,7 +136,7 @@ const SidebarMenu = (props) => {
                 <span className="sidebar-icon">
                   <Users />
                 </span>
-                <span className="sidebar-item-label">My Account</span>
+                <span className="sidebar-item-label">Account Settings</span>
                 <span className="sidebar-icon-indicator">
                   <ChevronRight />
                 </span>
@@ -264,10 +148,15 @@ const SidebarMenu = (props) => {
                       Profile
                     </NavLink>
                   </li>
+                  <li>
+                    <NavLink onClick={toggleSidebarMobile} to="/users">
+                      Users
+                    </NavLink>
+                  </li>
                 </ul>
               </Collapse>
             </li>
-          </ul>
+            </ul>
           
         </div>
       </PerfectScrollbar>
