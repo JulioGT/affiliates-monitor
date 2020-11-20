@@ -16,9 +16,9 @@ const ScrollToTop = ({ children, location: { pathname } }) => {
 
 export default withRouter(ScrollToTop);
 
-export const loadFromLocalStorage = () => {
+export const loadFromLocalStorage = (localst = 'auth') => {
   try {
-    const serializedState = localStorage.getItem('auth');
+    const serializedState = localStorage.getItem(localst);
     if (serializedState === null) return undefined;
     
     return JSON.parse(serializedState);

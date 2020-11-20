@@ -8,11 +8,13 @@ import {
   LeftSidebar,
   PresentationLayout
 } from './layout-blueprints';
+
 import { loadFromLocalStorage } from '../utils/ScrollToTop';
 
 const PageLoginBasic = lazy(() => import('./pages/PageLoginBasic'));
 const DashboardClicks = lazy(() => import('./pages/DashboardClicks'));
 const DashboardLeads = lazy(() => import('./pages/DashboardLeads'));
+const DashboardConversions = lazy(() => import('./pages/DashboardConversions'));
 const DashboardCampaigns = lazy(() => import('./pages/DashboardCampaigns'));
 
 const Routes = (props) => {
@@ -53,31 +55,6 @@ const Routes = (props) => {
     );
   };
 
-  const returnLocationComponent = () => {
-    if(props.auth){
-      switch(props.auth.location){
-        
-          case 'login':
-            return(
-              <PresentationLayout>
-                <PageLoginBasic />
-              </PresentationLayout>
-            )
-            break;
-        default:
-          return(
-            ''
-          )
-        break;
-      }
-    }
-    return(
-      <PresentationLayout>
-        <PageLoginBasic />  
-      </PresentationLayout>
-    )
-  }
-
   return (
     <AnimatePresence>
       <Suspense fallback={<SuspenseLoading />}>
@@ -110,16 +87,23 @@ const Routes = (props) => {
               </LeftSidebar>
             ) : ''
           }
+          {props.auth && props.auth.location === 'affiliatesConversionsDashboard' ? 
+            (
+              <LeftSidebar>
+                <DashboardConversions />
+              </LeftSidebar>
+            ) : ''
+          }
       </Suspense>
     </AnimatePresence>
   );
 };
 
 const mapStateToProps = (state) => {
-  const persistedState = loadFromLocalStorage();
+  const persistedState = loadFromLocalStorage('state');
   return {
     ...state,
-    auth: persistedState ? persistedState : null,
+    auth: persistedState ? persistedState.auth : null,
     authError: state.auth.authError
   };
 };

@@ -118,8 +118,8 @@ const PageTitleClicks = (props) => {
         </div>
         <div className="d-flex align-items-center">
           {children}
-
-          <UncontrolledDropdown className="mx-3">
+          {buttonText ?
+            <UncontrolledDropdown className="mx-3">
             <DropdownToggle size="sm" color="primary" caret>
               <span className="btn-wrapper--label pr-2">{buttonText}</span>
             </DropdownToggle>
@@ -206,21 +206,28 @@ const PageTitleClicks = (props) => {
               </div>
             </DropdownMenu>
           </UncontrolledDropdown>
-          <Button
-            onClick={toggleModal}
-            size="sm"
-            color="success"
-            id="AddEntryTooltip20">
-            <span className="btn-wrapper--icon">
-              <FontAwesomeIcon
-                icon={['fas', 'plus']}
-                className="opacity-8 font-size-xs"
-              />
-            </span>
-          </Button>
-          <UncontrolledTooltip target="AddEntryTooltip20">
-            {actionMessage}
-          </UncontrolledTooltip>
+            : ''
+          }
+          {actionMessage ? (
+            <>
+              <Button
+                onClick={toggleModal}
+                size="sm"
+                color="success"
+                id="AddEntryTooltip20">
+                <span className="btn-wrapper--icon">
+                  <FontAwesomeIcon
+                    icon={['fas', 'plus']}
+                    className="opacity-8 font-size-xs"
+                  />
+                </span>
+              </Button>
+              <UncontrolledTooltip target="AddEntryTooltip20">
+                {actionMessage}
+              </UncontrolledTooltip>
+            </>
+          ) : ''
+          }
         </div>
       </div>
       <Modal

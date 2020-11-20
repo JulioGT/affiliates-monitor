@@ -10,8 +10,7 @@ const initState = {
   authError: null,
   token: ls ? ls.token : '',
   isAuthenticated: ls ? ls.isAuthenticated : '',
-  image: ls ? ls.image : '',
-  location: 'login'
+  image: ls ? ls.image : ''
 };
 
 const authReducer = (state = initState, action) => {
@@ -37,7 +36,7 @@ const authReducer = (state = initState, action) => {
         location: 'login'
       };
     case 'LOGIN_SUCCESS':
-      localStorage.setItem('state', JSON.stringify(state));
+      // localStorage.setItem('state', JSON.stringify(state));
       return {
         ...state,
         ...action.state,
@@ -54,7 +53,7 @@ const authReducer = (state = initState, action) => {
         location: 'login'
       };
     case 'SET_LOCATION':
-      localStorage.setItem('state', JSON.stringify(state));
+      // localStorage.setItem('state', JSON.stringify(state));
         return {
           ...state,
           ...action.state,

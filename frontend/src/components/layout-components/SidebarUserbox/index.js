@@ -36,7 +36,7 @@ const SidebarUserbox = () => {
             <div className="align-box-row align-items-center p-3">
               <div className="avatar-icon-wrapper avatar-icon-md">
                 <div className="avatar-icon rounded-circle">
-                  <img alt="..." src={user.profilePhoto} /> 
+                  <img alt="..." src={user.profilePhoto.split("?")[0]} /> 
                 </div>
               </div>
               <div className="pl-2">
@@ -95,7 +95,7 @@ const SidebarUserbox = () => {
             Online
           </Badge>
           <div className="avatar-icon rounded-circle">
-            <img alt="..." src={user.profilePhoto} />
+            <img alt="..." src={user.profilePhoto.split("?")[0]} />
           </div>
         </div>
         <div className="my-3 userbox-details">

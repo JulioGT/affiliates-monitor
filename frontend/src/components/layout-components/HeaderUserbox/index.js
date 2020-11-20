@@ -33,7 +33,7 @@ const HeaderUserbox = (props) => {
             </Badge>
             <div className="avatar-icon rounded">
               {/* <img src={userProfile.profilePhoto} alt="..." /> */}
-              <img src={props.user.profilePhoto} alt="..." />
+              <img src={props.user.profilePhoto.split("?")[0]} alt="..." />
             </div>
           </div>
           <div className="d-none d-xl-block pl-2">

@@ -1,7 +1,9 @@
-import React, { useState } from 'react';
-
 import clsx from 'clsx';
-
+import Chart from 'react-apexcharts';
+import { connect } from 'react-redux';
+import React, { useState } from 'react';
+import { Grid, Users, Bell } from 'react-feather';
+import PerfectScrollbar from 'react-perfect-scrollbar';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   UncontrolledPopover,
@@ -21,17 +23,16 @@ import avatar6 from '../../../assets/images/avatars/avatar6.jpg';
 import people1 from '../../../assets/images/stock-photos/people-1.jpg';
 import people3 from '../../../assets/images/stock-photos/people-3.jpg';
 
-import { Grid, Users, Bell } from 'react-feather';
+import { logOut, setNewLocation } from '../../../actions/authActions';
 
-import Chart from 'react-apexcharts';
-import PerfectScrollbar from 'react-perfect-scrollbar';
-
-const HeaderDots = () => {
+const HeaderDots = (props) => {
+  const { logOut, setNewLocation } = props;
   const [activeTab, setActiveTab] = useState('1');
   const userProfile = JSON.parse(localStorage.getItem('auth'));
-
+  
   if (!userProfile) {
-    window.location = './login';
+    // window.location = './login';
+    setNewLocation('login');
   }
 
   // const userProfile = auth.user.profile;
@@ -42,28 +43,29 @@ const HeaderDots = () => {
   const logOutUser = (e) => {
     e.preventDefault();
     const token = userProfile.token;
+    
+    logOut(token);
+    // var myHeaders = new Headers();
+    // myHeaders.append('Authorization', `Token ${token}`);
+    // myHeaders.append(
+    //   'Cookie',
+    //   'csrftoken=4bI7Q82EiKpReY68yzqnVcfokOMQlUUiEXBCnywbyrFMRNEHIUkWH0sQgVARbRz5'
+    // );
 
-    var myHeaders = new Headers();
-    myHeaders.append('Authorization', `Token ${token}`);
-    myHeaders.append(
-      'Cookie',
-      'csrftoken=4bI7Q82EiKpReY68yzqnVcfokOMQlUUiEXBCnywbyrFMRNEHIUkWH0sQgVARbRz5'
-    );
+    // var requestOptions = {
+    //   method: 'POST',
+    //   headers: myHeaders,
+    //   redirect: 'follow'
+    // };
 
-    var requestOptions = {
-      method: 'POST',
-      headers: myHeaders,
-      redirect: 'follow'
-    };
-
-    fetch(process.env.REACT_APP_LOGOUT_URL, requestOptions)
-      .then((response) => response.text())
-      .then((result) => {
-        console.log(result);
-        localStorage.clear();
-        window.location = '/login';
-      })
-      .catch((error) => console.log('error', error));
+    // fetch(process.env.REACT_APP_LOGOUT_URL, requestOptions)
+    //   .then((response) => response.text())
+    //   .then((result) => {
+    //     console.log(result);
+    //     localStorage.clear();
+    //     window.location = '/login';
+    //   })
+    //   .catch((error) => console.log('error', error));
   };
 
   const chartHeaderDotsOptions = {
@@ -533,4 +535,13 @@ const HeaderDots = () => {
   );
 };
 
-export default HeaderDots;
+const mapDispatchToProps = (dispatch) => {
+  return {
+    logOut: (token) => dispatch(logOut(token)),
+    setNewLocation: (location) => dispatch(setNewLocation(location))
+  };
+};
+
+export default connect(null, mapDispatchToProps)(HeaderDots);
+
+

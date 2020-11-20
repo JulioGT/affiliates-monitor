@@ -15,6 +15,7 @@ export { default as ThemeConfigurator } from './ThemeConfigurator';
 
 export { default as PageTitleClicks } from './PageTitleClicks';
 export { default as PageTitleLeads } from './PageTitleClicks';
+export { default as PageTitleConversions } from './PageTitleClicks';
 export { default as PageTitleCampaigns } from './PageTitleClicks';
 export { default as PageTitleUsers } from './PageTitleUsers';
 // export { default as PageTitleCampaigns } from './PageTitleCampaigns';

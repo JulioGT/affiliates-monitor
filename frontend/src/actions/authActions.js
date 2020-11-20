@@ -3,21 +3,6 @@ import 'regenerator-runtime/runtime';
 
 export const signIn = (credentials) => {
   const {email} = JSON.parse(credentials);
-  // console.log(credentials);
-  // let myHeaders = new Headers();
-  // myHeaders.append('Content-Type', 'application/json');
-  // myHeaders.append(
-  //   'Cookie',
-  //   'csrftoken=4bI7Q82EiKpReY68yzqnVcfokOMQlUUiEXBCnywbyrFMRNEHIUkWH0sQgVARbRz5'
-  // );
-
-  // var requestOptions = {
-  //   method: 'POST',
-  //   headers: myHeaders,
-  //   body: credentials,
-  //   redirect: 'follow'
-  // };
-
   var config = {
     method: 'POST',
     url: `${process.env.REACT_APP_LOGIN_URL}`,
@@ -119,7 +104,6 @@ export const logOut = (token) => {
 };
 
 export const setNewLocation = (newLocation) => {
-  // console.log(newLocation);
   return (dispatch) => {
     dispatch({
       type: 'SET_LOCATION',

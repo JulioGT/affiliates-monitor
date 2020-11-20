@@ -83,7 +83,7 @@ const LivePreviewExample = (props) => {
               <div className="align-box-row align-items-start">
                 <div className="font-weight-bold">
                   <small className="text-white-50 d-block mb-1 text-uppercase">
-                    Leads
+                    Conversions
                   </small>
                   <span className="font-size-xxl mt-1">
                     {leadCounter}

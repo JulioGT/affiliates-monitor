@@ -94,6 +94,13 @@ const SidebarMenu = (props) => {
                           Leads
                         </NavLink>
                       </li>
+                      <li>
+                        <NavLink
+                          onClick={(e) => changeToNewLocation(e, 'affiliatesConversionsDashboard')}
+                          to="">
+                          Conversions
+                        </NavLink>
+                      </li>
                     </ul>
                   </Collapse>
                 </li>
@@ -172,8 +179,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    setSidebarToggleMobile: (enable) => dispatch(setSidebarToggleMobile(enable))
-    ,
+    setSidebarToggleMobile: (enable) => dispatch(setSidebarToggleMobile(enable)),
     setNewLocation: (location) => dispatch(setNewLocation(location))
   };
 }
