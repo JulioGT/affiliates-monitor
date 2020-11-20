@@ -223,7 +223,7 @@ const LivePreviewExample = (props) => {
         );
       } else {
         // console.log(props.campaign);
-        return Object.values(props.campaign.data.results).map((val, id) => {
+        return Object.values(props.campaign.results).map((val, id) => {
           return (
             <tr key={id} className="nopadding">
               <td className="text-left nopadding">

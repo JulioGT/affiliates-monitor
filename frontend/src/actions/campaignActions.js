@@ -1,8 +1,9 @@
 import axios from 'axios';
+// import { async } from 'regenerator-runtime';
 
 export const displayNextCampaignSet = (token, url) => {
-  return (dispatch) => {
-    axios({
+  return async (dispatch) => {
+    return axios({
       method: 'GET',
       url: `${url}`,
       headers: {
@@ -15,7 +16,7 @@ export const displayNextCampaignSet = (token, url) => {
         dispatch({
           type: 'CAMPAIGN_SUCCESS',
           campaign: {
-            ...campaigndata
+            ...campaigndata.data
           }
         });
       })
@@ -36,8 +37,8 @@ export const displayNextCampaignSet = (token, url) => {
 export const createCampaign = (campaignData, token) => {
   // console.log(token, campaignData);
 
-  return (dispatch) => {
-    axios({
+  return async (dispatch) => {
+    return axios({
       method: 'POST',
       url: `${process.env.REACT_APP_API_CAMPAIGNS}`,
       headers: {
@@ -47,7 +48,7 @@ export const createCampaign = (campaignData, token) => {
       data: campaignData
     })
       .then((campaigndata) => {
-        dispatch({
+        return dispatch({
           type: 'CREATE_CAMPAIGN_SUCCESS',
           createCampaign: true
         });
@@ -61,8 +62,8 @@ export const createCampaign = (campaignData, token) => {
 
 export const getSpecificCampaign = (token, url) => {
   //Get specific Campaign Info from API
-  return (dispatch) => {
-    axios({
+  return async (dispatch) => {
+    return axios({
       method: 'GET',
       url: url,
       headers: {
