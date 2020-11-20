@@ -1,5 +1,5 @@
-import React, { lazy, Suspense } from 'react';
 import { connect } from 'react-redux';
+import React, { lazy, Suspense } from 'react';
 import { AnimatePresence } from 'framer-motion';
 import { ClimbingBoxLoader } from 'react-spinners';
 
@@ -11,11 +11,12 @@ import {
 
 import { loadFromLocalStorage } from '../utils/ScrollToTop';
 
+const MyProfile = lazy(() => import('./pages/MyProfile'));
 const PageLoginBasic = lazy(() => import('./pages/PageLoginBasic'));
-const DashboardClicks = lazy(() => import('./pages/DashboardClicks'));
 const DashboardLeads = lazy(() => import('./pages/DashboardLeads'));
-const DashboardConversions = lazy(() => import('./pages/DashboardConversions'));
+const DashboardClicks = lazy(() => import('./pages/DashboardClicks'));
 const DashboardCampaigns = lazy(() => import('./pages/DashboardCampaigns'));
+const DashboardConversions = lazy(() => import('./pages/DashboardConversions'));
 
 const Routes = (props) => {
   const pageVariants = {
@@ -91,6 +92,13 @@ const Routes = (props) => {
             (
               <LeftSidebar>
                 <DashboardConversions />
+              </LeftSidebar>
+            ) : ''
+          }
+          {props.auth && props.auth.location === 'affiliatesProfile' ? 
+            (
+              <LeftSidebar>
+                <MyProfile />
               </LeftSidebar>
             ) : ''
           }

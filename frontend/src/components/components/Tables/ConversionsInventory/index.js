@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
-import { connect } from 'react-redux';
 import clsx from 'clsx';
+import { connect } from 'react-redux';
+import React, { useState, useEffect } from 'react';
 import PerfectScrollbar from 'react-perfect-scrollbar'; 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {

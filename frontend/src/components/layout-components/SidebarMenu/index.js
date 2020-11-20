@@ -151,7 +151,7 @@ const SidebarMenu = (props) => {
               <Collapse isOpen={myAccountOpen}>
                 <ul className="pb-0">
                   <li>
-                    <NavLink onClick={toggleSidebarMobile} to="/myprofile">
+                    <NavLink onClick={(e) => changeToNewLocation(e, 'affiliatesProfile')} to="">
                       Profile
                     </NavLink>
                   </li>

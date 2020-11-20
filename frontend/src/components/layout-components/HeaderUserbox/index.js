@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { loadFromLocalStorage } from '../../../utils/ScrollToTop';
 import {
   Badge,
   ListGroup,
@@ -14,7 +15,6 @@ import {
   DropdownMenu
 } from 'reactstrap';
 import { NavLink as NavLinkStrap } from 'reactstrap';
-import { loadFromLocalStorage } from '../../../utils/ScrollToTop';
 
 const HeaderUserbox = (props) => {
   // const userProfile = JSON.parse(localStorage.getItem('auth')).user.profile;

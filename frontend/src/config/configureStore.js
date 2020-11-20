@@ -1,29 +1,30 @@
-import { createStore, combineReducers, applyMiddleware } from 'redux';
-import thunkMiddleware from 'redux-thunk';
 import reducers from '../reducers';
-// import accountReducer from '../reducers/accountReducer';
+import thunkMiddleware from 'redux-thunk';
+import { createStore, combineReducers, applyMiddleware } from 'redux';
+
 import authReducer from '../reducers/authReducer';
-// import routeReducer from '../reducers/routeReducer';
+import clickReducer from '../reducers/clickReducer';
+import campaignReducer from '../reducers/campaignReducer';
+
+// import offerReducer from 'reducers/offerReducer';
 // import userReducer from '../reducers/userReducer';
+// import routeReducer from '../reducers/routeReducer';
 // import verticalReducer from 'reducers/verticalReducer';
 // import categoryReducer from 'reducers/categoryReducer';
-// import advertiserReducer from 'reducers/advertiserReducer';
+// import accountReducer from '../reducers/accountReducer';
 // import affiliateReducer from 'reducers/affiliateReducer';
-// import offerReducer from 'reducers/offerReducer';
-import campaignReducer from '../reducers/campaignReducer';
-import clickReducer from '../reducers/clickReducer';
+// import advertiserReducer from 'reducers/advertiserReducer';
 
 const rootReducer = combineReducers({
-  ...reducers
-  ,
+  ...reducers,
+  auth: authReducer,
+  click: clickReducer,
+  campaign: campaignReducer,
   // account: accountReducer,
   // advertiser: advertiserReducer,
   // affiliate: affiliateReducer,
-  auth: authReducer,
   // route: routeReducer
-  campaign: campaignReducer,
   // category: categoryReducer,
-  click: clickReducer,
   // offer: offerReducer,
   // user: userReducer,
   // vertical: verticalReducer

@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import React, { useState, useEffect } from 'react';
 import { Row, Col, CardBody, Card } from 'reactstrap';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import { loadFromLocalStorage } from '../../../../utils/ScrollToTop';
 
